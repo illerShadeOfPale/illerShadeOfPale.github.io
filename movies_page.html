@@ -18,15 +18,18 @@
 
 	<div class="sections">
 		<input id="search_query" name="search_query" type="text" />
-	</div><br />
+	</div>
 
+	<div id="search_results">
+
+	</div>
 
 
 	<script>
 			$("#search_query").change(function () {
                 let q = $(this).val();
 
-				console.log("Searhing on: " + q);
+				console.log("Searching on: " + q);
 
 				$.ajax({
 					"async": true,
@@ -38,8 +41,11 @@
 						"x-rapidapi-key": "852116b1d6mshc708cc389435b46p194899jsn14154f579ca9"
 					}
 				}).done(function (response) {
-					console.log('Ran Search IMDB branch');
 					console.log(response);
+
+					$.each(response.d, function (index, value) {
+						$("#search_results").append(index + " Match: " + value.l + "<br>");
+					});
 				});
 			});
 	</script>
