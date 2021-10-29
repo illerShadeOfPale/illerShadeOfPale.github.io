@@ -23,9 +23,8 @@
 
 
 	<script>
-		$(function () {
-			$("#search_query").change({
-                var q = $("#search_query").val();
+			$("#search_query").change(function () {
+                let q = $(this).val();
 
 				console.log("Searhing on: " + q);
 
@@ -43,7 +42,6 @@
 					console.log(response);
 				});
 			});
-		});
 	</script>
 
 </body>
