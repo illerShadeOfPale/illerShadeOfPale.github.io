@@ -23,21 +23,9 @@
 
 
 	<script>
-		const imdb = {
-			"async": true,
-			"crossDomain": true,
-			"url": "https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr",
-			"method": "GET",
-			"headers": {
-				"x-rapidapi-host": "imdb8.p.rapidapi.com",
-				"x-rapidapi-key": "852116b1d6mshc708cc389435b46p194899jsn14154f579ca9"
-			}
-		};
-
-
 		$(function () {
 			$("#search_query").change({
-				let q = $(this).val();
+                var q = $("#search_query").val();
 
 				console.log("Searhing on: " + q);
 
