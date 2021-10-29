@@ -12,19 +12,51 @@
 	<!-- <link href="css/custom.css" rel="stylesheet" type="text/css"> -->
 	<!-- jQuery 3.3.1 -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+</head>
+<body>
 	<a href="index.html">Home Page</a>
 
-	<nav class="panel bottom lastSlideOnly">
-		<div class="sections">
-			<div class="center">
-				<ul class="menu crop">
-					<li><a href="http://twitter.com/designmodo" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<div class="sections">
+		<input id="search_query" name="search_query" type="text" />
+	</div><br />
 
 
-	</body>
+
+	<script>
+		const imdb = {
+			"async": true,
+			"crossDomain": true,
+			"url": "https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr",
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-host": "imdb8.p.rapidapi.com",
+				"x-rapidapi-key": "852116b1d6mshc708cc389435b46p194899jsn14154f579ca9"
+			}
+		};
+
+
+		$(function () {
+			$("#search_query").change({
+				let q = $(this).val();
+
+				console.log("Searhing on: " + q);
+
+				$.ajax({
+					"async": true,
+					"crossDomain": true,
+					"url": "https://imdb8.p.rapidapi.com/auto-complete?q=" + q,
+					"method": "GET",
+					"headers": {
+						"x-rapidapi-host": "imdb8.p.rapidapi.com",
+						"x-rapidapi-key": "852116b1d6mshc708cc389435b46p194899jsn14154f579ca9"
+					}
+				}).done(function (response) {
+					console.log('Ran Search IMDB branch');
+					console.log(response);
+				});
+			});
+		});
+	</script>
+
+</body>
 </html>
